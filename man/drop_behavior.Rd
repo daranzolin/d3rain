@@ -4,8 +4,8 @@
 \alias{drop_behavior}
 \title{Adjust d3rain drop behavior}
 \usage{
-drop_behavior(d3rain, ease = "bounce", dropSpeed = 1500,
-  iterationSpeedX = 100)
+drop_behavior(d3rain, dropSequence = "iterate", ease = "bounce",
+  dropSpeed = 1500, iterationSpeedX = 100, jitterWidth = 0)
 }
 \arguments{
 \item{d3rain}{An object of class d3rain}

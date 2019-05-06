@@ -2,10 +2,21 @@
 % Please edit documentation in R/d3rain.R
 \name{d3rain}
 \alias{d3rain}
-\title{<Add Title>}
+\title{Create a d3rain visualization}
 \usage{
-d3rain(.data, x, y)
+d3rain(.data, x, y, toolTip, reverseX = FALSE, title = "")
+}
+\arguments{
+\item{.data}{A table of data.}
+
+\item{x}{A numeric 'ranking' variable, e.g. percentile, rank, etc.}
+
+\item{y}{A factored, ordinal variable.}
+
+\item{toolTip}{Which variable to display on drop tooltips.}
+
+\item{title}{Visualization title}
 }
 \description{
-<Add Description>
+Create a d3rain visualization
 }

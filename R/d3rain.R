@@ -1,32 +1,29 @@
-#' <Add Title>
+#' Create a d3rain visualization
 #'
-#' <Add Description>
+#' @param .data A table of data.
+#' @param x A numeric 'ranking' variable, e.g. percentile, rank, etc.
+#' @param y A factored, ordinal variable.
+#' @param toolTip Which variable to display on drop tooltips.
+#' @param title Visualization title
 #'
 #' @import htmlwidgets
 #'
 #' @export
-d3rain <- function(.data, x, y, toolTip) {
+d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+  toolTip <- rlang::enquo(toolTip)
 
-  if (!missing(toolTip)) {
-    toolTip <- rlang::enquo(toolTip)
-    out_df <- subset(.data, select = c(tidyselect::vars_select(names(.data), !!x, !!y, !!toolTip)))
-    names(out_df) <- c("ind", "group", "toolTip")
-  } else {
-    out_df <- subset(.data, select = c(tidyselect::vars_select(names(.data), !!x, !!y)))
-    names(out_df) <- c("ind", "group")
-  }
-
+  out_df <- subset(.data, select = c(tidyselect::vars_select(names(.data), !!x, !!y, !!toolTip)))
   if (!is.numeric(out_df$ind)) stop ("x must be numeric.", call. = FALSE)
   if (!is.factor(out_df$group)) stop("y must be a factor.", call. = FALSE)
 
-  y_domain <- levels(out_df$group)
-
   x = list(
     data = out_df,
-    y_domain = y_domain
+    y_domain = levels(out_df$group),
+    title = title,
+    reverseX = reverseX
   )
 
   # create widget
@@ -46,15 +43,26 @@ d3rain <- function(.data, x, y, toolTip) {
 #'
 #' @export
 drop_behavior <- function(d3rain,
+                          dropSequence = 'iterate',
                           ease = 'bounce',
                           dropSpeed = 1500,
                           iterationSpeedX = 100,
                           jitterWidth = 0) {
 
-  if (!inherits(d3rain, 'd3rain')) stop("d3rain must be of class 'd3rain'")
-  if (!any(ease %in% c('bounce', 'linear'))) stop("ease param must be 'bounce' or 'linear'", call. = FALSE)
-  if (!any(c(is.numeric(dropSpeed), is.numeric(iterationSpeedX)))) stop("dropSpeed and iterationSpeedX must be numeric", call. = FALSE)
+  if (!any(dropSequence %in% c('iterate', 'together'))) {
+    stop("dropSequence param must be 'iterate' or 'together'", call. = FALSE)
+  }
+  if (!inherits(d3rain, 'd3rain')) {
+    stop("d3rain must be of class 'd3rain'")
+  }
+  if (!any(ease %in% c('bounce', 'linear'))) {
+    stop("ease param must be 'bounce' or 'linear'", call. = FALSE)
+  }
+  if (!any(c(is.numeric(dropSpeed), is.numeric(iterationSpeedX)))) {
+    stop("dropSpeed and iterationSpeedX must be numeric", call. = FALSE)
+  }
 
+  d3rain$x$dropSequence <- dropSequence
   d3rain$x$ease <- ease
   d3rain$x$dropSpeed <- dropSpeed
   d3rain$x$iterationSpeedX <- iterationSpeedX
