@@ -2,5 +2,7 @@
 
 export(d3rain)
 export(d3rainOutput)
+export(drop_behavior)
+export(drop_style)
 export(renderD3rain)
 import(htmlwidgets)

@@ -5,11 +5,28 @@
 #' @import htmlwidgets
 #'
 #' @export
-d3rain <- function(.data) {
+d3rain <- function(.data, x, y, toolTip) {
 
-  # forward options using x
+  x <- rlang::enquo(x)
+  y <- rlang::enquo(y)
+
+  if (!missing(toolTip)) {
+    toolTip <- rlang::enquo(toolTip)
+    out_df <- subset(.data, select = c(tidyselect::vars_select(names(.data), !!x, !!y, !!toolTip)))
+    names(out_df) <- c("ind", "group", "toolTip")
+  } else {
+    out_df <- subset(.data, select = c(tidyselect::vars_select(names(.data), !!x, !!y)))
+    names(out_df) <- c("ind", "group")
+  }
+
+  if (!is.numeric(out_df$ind)) stop ("x must be numeric.", call. = FALSE)
+  if (!is.factor(out_df$group)) stop("y must be a factor.", call. = FALSE)
+
+  y_domain <- levels(out_df$group)
+
   x = list(
-    data = .data
+    data = out_df,
+    y_domain = y_domain
   )
 
   # create widget
@@ -19,6 +36,59 @@ d3rain <- function(.data) {
     package = 'd3rain'
   )
 }
+
+#' Adjust d3rain drop behavior
+#'
+#' @param d3rain An object of class d3rain
+#' @param ease Either 'bounce' or 'linear'
+#' @param dropSpeed Drop speed
+#' @param iterationSpeedX Iteration speed multiplier
+#'
+#' @export
+drop_behavior <- function(d3rain,
+                          ease = 'bounce',
+                          dropSpeed = 1500,
+                          iterationSpeedX = 100,
+                          jitterWidth = 0) {
+
+  if (!inherits(d3rain, 'd3rain')) stop("d3rain must be of class 'd3rain'")
+  if (!any(ease %in% c('bounce', 'linear'))) stop("ease param must be 'bounce' or 'linear'", call. = FALSE)
+  if (!any(c(is.numeric(dropSpeed), is.numeric(iterationSpeedX)))) stop("dropSpeed and iterationSpeedX must be numeric", call. = FALSE)
+
+  d3rain$x$ease <- ease
+  d3rain$x$dropSpeed <- dropSpeed
+  d3rain$x$iterationSpeedX <- iterationSpeedX
+  d3rain$x$jitterWidth <- jitterWidth
+  return(d3rain)
+}
+
+#' Adjust d3rain drop style
+#'
+#' @param d3rain An object of class d3rain
+#' @param dropFill Color of drops
+#' @param backgroundFill Background color of SVG
+#' @param fontSize Font size
+#' @param fontFamily Font family, e.g. 'times', 'sans-serif'
+#'
+#' @return
+#' @export
+#'
+#' @examples
+drop_style <- function(d3rain,
+                       dropFill = 'firebrick',
+                       backgroundFill = 'white',
+                       fontSize = 18,
+                       fontFamily = 'sans-serif',
+                       dropOpacity = 0.5) {
+
+  d3rain$x$dropFill <- dropFill
+  d3rain$x$dropOpacity <- dropOpacity
+  d3rain$x$backgroundFill <- backgroundFill
+  d3rain$x$fontSize <- fontSize
+  d3rain$x$fontFamily <- fontFamily
+  return(d3rain)
+}
+
 
 #' Shiny bindings for d3rain
 #'

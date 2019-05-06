@@ -4,7 +4,7 @@
 \alias{d3rain}
 \title{<Add Title>}
 \usage{
-d3rain(.data)
+d3rain(.data, x, y)
 }
 \description{
 <Add Description>
