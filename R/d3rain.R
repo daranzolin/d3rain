@@ -1,9 +1,10 @@
 #' Create a d3rain visualization
 #'
-#' @param .data A table of data.
+#' @param .data A table of data
 #' @param x A numeric 'ranking' variable, e.g. percentile, rank, etc.
-#' @param y A factored, ordinal variable.
-#' @param toolTip Which variable to display on drip tooltips.
+#' @param y A factored, ordinal variable
+#' @param toolTip Which variable to display on drip tooltips
+#' @param reverseX Whether to reverse the x-axis
 #' @param title Visualization title
 #'
 #' @import htmlwidgets
@@ -16,6 +17,7 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
   toolTip <- rlang::enquo(toolTip)
 
   out_df <- subset(.data, select = c(tidyselect::vars_select(names(.data), !!x, !!y, !!toolTip)))
+  names(out_df) <- c('ind', 'group', 'toolTip')
   if (!is.numeric(out_df$ind)) stop ("x must be numeric.", call. = FALSE)
   if (!is.factor(out_df$group)) stop("y must be a factor.", call. = FALSE)
 
@@ -37,9 +39,11 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
 #' Adjust drip behavior
 #'
 #' @param d3rain An object of class d3rain
+#' @param dripSequence Either 'iterage' or 'together'
 #' @param ease Either 'bounce' or 'linear'
 #' @param dripSpeed Drip speed
 #' @param iterationSpeedX Iteration speed multiplier
+#' @param jitterWidth Jitter width in pixels along x-axis
 #'
 #' @export
 drip_behavior <- function(d3rain,

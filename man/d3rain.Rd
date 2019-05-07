@@ -7,13 +7,15 @@
 d3rain(.data, x, y, toolTip, reverseX = FALSE, title = "")
 }
 \arguments{
-\item{.data}{A table of data.}
+\item{.data}{A table of data}
 
 \item{x}{A numeric 'ranking' variable, e.g. percentile, rank, etc.}
 
-\item{y}{A factored, ordinal variable.}
+\item{y}{A factored, ordinal variable}
 
-\item{toolTip}{Which variable to display on drip tooltips.}
+\item{toolTip}{Which variable to display on drip tooltips}
+
+\item{reverseX}{Whether to reverse the x-axis}
 
 \item{title}{Visualization title}
 }

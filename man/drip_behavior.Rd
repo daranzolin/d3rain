@@ -10,11 +10,15 @@ drip_behavior(d3rain, dripSequence = "iterate", ease = "bounce",
 \arguments{
 \item{d3rain}{An object of class d3rain}
 
+\item{dripSequence}{Either 'iterage' or 'together'}
+
 \item{ease}{Either 'bounce' or 'linear'}
 
 \item{dripSpeed}{Drip speed}
 
 \item{iterationSpeedX}{Iteration speed multiplier}
+
+\item{jitterWidth}{Jitter width in pixels along x-axis}
 }
 \description{
 Adjust drip behavior
