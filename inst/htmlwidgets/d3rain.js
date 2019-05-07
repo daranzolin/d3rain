@@ -38,11 +38,11 @@ HTMLWidgets.widget({
         let x;
         if (opts.reverseX) {
           x = d3.scaleLinear()
-                .domain([d3.max(data, d => +d.ind), 0])
+                .domain([d3.max(data, d => +d.ind), d3.min(data, d => +d.ind)])
                 .range([margin.left, width - margin.right]);
         } else {
           x = d3.scaleLinear()
-                .domain([0, d3.max(data, d => +d.ind)])
+                .domain([d3.min(data, d => +d.ind), d3.max(data, d => +d.ind)])
                 .range([margin.left, width - margin.right]);
         }
 
