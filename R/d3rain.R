@@ -49,7 +49,7 @@ drop_behavior <- function(d3rain,
                           iterationSpeedX = 100,
                           jitterWidth = 0) {
 
-  if (!any(dropSequence %in% c('iterate', 'together'))) {
+  if (!any(dropSequence %in% c('iterate', 'together', 'by_group'))) {
     stop("dropSequence param must be 'iterate' or 'together'", call. = FALSE)
   }
   if (!inherits(d3rain, 'd3rain')) {
