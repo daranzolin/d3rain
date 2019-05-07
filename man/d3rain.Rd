@@ -13,7 +13,7 @@ d3rain(.data, x, y, toolTip, reverseX = FALSE, title = "")
 
 \item{y}{A factored, ordinal variable.}
 
-\item{toolTip}{Which variable to display on drop tooltips.}
+\item{toolTip}{Which variable to display on drip tooltips.}
 
 \item{title}{Visualization title}
 }
