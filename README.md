@@ -46,7 +46,7 @@ pk %>%
 ```
 
 ![Alt
-Text](https://raw.githubusercontent.com/daranzolin/d3rain/inst/d3raingif.mp4)
+Text](https://raw.githubusercontent.com/daranzolin/d3rain/master/inst/img/d3raingif.gif)
 
 `drip_behavior` adjusts the drip sequence, easing animation, jitter
 width, and drip speed. `drip_style` controls the drip fill, font size,
