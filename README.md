@@ -16,7 +16,7 @@ package brings some D3 drip to R.
 You can install `d3rain` from GitHub via:
 
 ``` r
-remotes::install_github("daranzoling/d3rain")
+remotes::install_github("daranzolin/d3rain")
 ```
 
 ## Example
