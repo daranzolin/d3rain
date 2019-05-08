@@ -29,7 +29,7 @@ HTMLWidgets.widget({
         let fontSize = opts.hasOwnProperty('fontSize') ? opts.fontSize : 18;
         let fontFamily = opts.hasOwnProperty('fontFamily') ? opts.fontFamily : 'sans-serif';
         let jitterWidth = opts.hasOwnProperty('jitterWidth') ? opts.jitterWidth : 0;
-        let dropSequence = opts.hasOwnProperty('dropSequence') ? opts.dropSequence : 'iterate';
+        let dripSequence = opts.hasOwnProperty('dripSequence') ? opts.dripSequence : 'iterate';
 
         function ease(o) {
             return o === 'bounce' ? d3.easeBounce : d3.easeLinear;
@@ -103,24 +103,24 @@ HTMLWidgets.widget({
                 .attr('cx', d => x(d.ind))
                 .attr('cy', margin.top / 2)
                 .attr('r', 5)
-                .attr('fill', opts.hasOwnProperty('dropFill') ? opts.dropFill : 'firebrick')
-                .style('opacity', opts.hasOwnProperty('dropOpacity') ? opts.dropOpacity : 0.5)
+                .attr('fill', opts.hasOwnProperty('dripFill') ? opts.dripFill : 'firebrick')
+                .style('opacity', opts.hasOwnProperty('dripOpacity') ? opts.dripOpacity : 0.5)
                 .on('mouseover', tip.show)
                 .on('mouseout', tip.hide);
 
 
-        if (dropSequence === 'iterate') {
+        if (dripSequence === 'iterate') {
           d3.timeout(_ => {
             circles = circles.transition()
             .delay((d, i) => opts.hasOwnProperty('iterationSpeedX') ? opts.iterationSpeedX * i : 100 * i)
-            .duration(opts.hasOwnProperty('dropSpeed') ? opts.dropSpeed : 1000)
+            .duration(opts.hasOwnProperty('dripSpeed') ? opts.dripSpeed : 1000)
             .ease(opts.hasOwnProperty('ease') ? ease(opts.ease) : d3.easeBounce)
             .attr('cy', d => y(d.group) + y.bandwidth() / 2 - Math.random() * jitterWidth);
             }, 1500);
         } else {
           d3.timeout(_ => {
             circles = circles.transition()
-            .duration(opts.hasOwnProperty('dropSpeed') ? opts.dropSpeed : 1000)
+            .duration(opts.hasOwnProperty('dripSpeed') ? opts.dripSpeed : 1000)
             .ease(opts.hasOwnProperty('ease') ? ease(opts.ease) : d3.easeBounce)
             .attr('cy', d => y(d.group) + y.bandwidth() / 2 - Math.random() * jitterWidth);
           }, 1500);

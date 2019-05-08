@@ -39,7 +39,7 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
 #' Adjust drip behavior
 #'
 #' @param d3rain An object of class d3rain
-#' @param dripSequence Either 'iterage' or 'together'
+#' @param dripSequence Either 'iterate' or 'together'
 #' @param ease Either 'bounce' or 'linear'
 #' @param dripSpeed Drip speed
 #' @param iterationSpeedX Iteration speed multiplier

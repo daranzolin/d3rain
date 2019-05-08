@@ -10,7 +10,7 @@ drip_behavior(d3rain, dripSequence = "iterate", ease = "bounce",
 \arguments{
 \item{d3rain}{An object of class d3rain}
 
-\item{dripSequence}{Either 'iterage' or 'together'}
+\item{dripSequence}{Either 'iterate' or 'together'}
 
 \item{ease}{Either 'bounce' or 'linear'}
 
