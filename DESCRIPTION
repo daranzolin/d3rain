@@ -1,9 +1,9 @@
 Package: d3rain
-Title: Interactive rain drop visualizations with d3
+Title: Interactive D3 Rain Drop Visualizations
 Version: 0.0.0.9000
 Authors@R: person("David", "Ranzolin", email = "daranzolin@gmail.com", role = c("aut", "cre"))
-Description: That real d3, htmlwidget DRIP. Observe the interaction between a numeric ranking variable and a factored categorical variable.
-Depends: R (>= 3.5.1)
+Description: Observe the interaction between a numeric ranking variable and a factored categorical variable.
+Depends: R (>= 3.5)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -11,4 +11,5 @@ RoxygenNote: 6.1.1
 Imports: 
     tidyselect,
     rlang,
-    htmlwidgets
+    htmlwidgets,
+    magrittr
