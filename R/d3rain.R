@@ -10,6 +10,10 @@
 #' @import htmlwidgets
 #'
 #' @export
+#' @examples
+#' mtcars$cyl <- factor(mtcars$cyl)
+#' mtcars$car <- rownames(mtcars)
+#' d3rain(mtcars, mpg, cyl, car)
 d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
 
   x <- rlang::enquo(x)
@@ -46,6 +50,11 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
 #' @param jitterWidth Jitter width in pixels along x-axis
 #'
 #' @export
+#' @examples
+#' mtcars$cyl <- factor(mtcars$cyl)
+#' mtcars$car <- rownames(mtcars)
+#' d3rain(mtcars, mpg, cyl, car) %>%
+#'     drip_behavior(ease = 'linear', jitterWidth = 25, dripSpeed = 500)
 drip_behavior <- function(d3rain,
                           dripSequence = 'iterate',
                           ease = 'bounce',
@@ -85,6 +94,12 @@ drip_behavior <- function(d3rain,
 #'
 #' @return d3rain
 #' @export
+#' @examples
+#' mtcars$cyl <- factor(mtcars$cyl)
+#' mtcars$car <- rownames(mtcars)
+#' d3rain(mtcars, mpg, cyl, car) %>%
+#'     drip_behavior(ease = 'linear', jitterWidth = 25, dripSpeed = 500) %>%
+#'     drip_style(dripFill = 'steelblue', dripOpacity = 0.2)
 drip_style <- function(d3rain,
                        dripFill = 'firebrick',
                        backgroundFill = 'white',

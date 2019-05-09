@@ -23,3 +23,9 @@ drip_behavior(d3rain, dripSequence = "iterate", ease = "bounce",
 \description{
 Adjust drip behavior
 }
+\examples{
+mtcars$cyl <- factor(mtcars$cyl)
+mtcars$car <- rownames(mtcars)
+d3rain(mtcars, mpg, cyl, car) \%>\%
+    drip_behavior(ease = 'linear', jitterWidth = 25, dripSpeed = 500)
+}

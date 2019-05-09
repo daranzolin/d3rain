@@ -22,3 +22,8 @@ d3rain(.data, x, y, toolTip, reverseX = FALSE, title = "")
 \description{
 Create a d3rain visualization
 }
+\examples{
+mtcars$cyl <- factor(mtcars$cyl)
+mtcars$car <- rownames(mtcars)
+d3rain(mtcars, mpg, cyl, car)
+}

@@ -26,3 +26,10 @@ d3rain
 \description{
 Adjust drip style
 }
+\examples{
+mtcars$cyl <- factor(mtcars$cyl)
+mtcars$car <- rownames(mtcars)
+d3rain(mtcars, mpg, cyl, car) \%>\%
+    drip_behavior(ease = 'linear', jitterWidth = 25, dripSpeed = 500) \%>\%
+    drip_style(dripFill = 'steelblue', dripOpacity = 0.2)
+}
