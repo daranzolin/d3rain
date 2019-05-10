@@ -110,7 +110,7 @@ HTMLWidgets.widget({
               .attr('class', 'd3-tip')
               .offset([7, 7])
               .html(function(d) {
-                return `<span>${d.toolTip}</span>`;
+                return `<span>${opts.toolTipName}: ${d.toolTip}</span>`;
               });
 
         svg.call(tip);

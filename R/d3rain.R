@@ -21,12 +21,14 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
   toolTip <- rlang::enquo(toolTip)
 
   out_df <- subset(.data, select = c(tidyselect::vars_select(names(.data), !!x, !!y, !!toolTip)))
+  toolTipName <- names(out_df)[3]
   names(out_df) <- c('ind', 'group', 'toolTip')
   if (!is.numeric(out_df$ind)) stop ("x must be numeric.", call. = FALSE)
   if (!is.factor(out_df$group)) stop("y must be a factor.", call. = FALSE)
 
   x = list(
     data = out_df,
+    toolTipName = toolTipName,
     y_domain = levels(out_df$group),
     title = title,
     reverseX = reverseX
