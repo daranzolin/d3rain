@@ -4,9 +4,9 @@
 \alias{drip_style}
 \title{Adjust drip style}
 \usage{
-drip_style(d3rain, dripFill = "firebrick", backgroundFill = "white",
-  fontSize = 18, fontFamily = "sans-serif", dripOpacity = 0.5,
-  yAxisTickLocation = "center")
+drip_style(d3rain, dripFill = "firebrick", toolTipTextColor = "white",
+  backgroundFill = "white", fontSize = 18, fontFamily = "sans-serif",
+  dripOpacity = 0.5, yAxisTickLocation = "center")
 }
 \arguments{
 \item{d3rain}{An object of class d3rain}
