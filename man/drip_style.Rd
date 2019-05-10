@@ -13,6 +13,8 @@ drip_style(d3rain, dripFill = "firebrick", toolTipTextColor = "white",
 
 \item{dripFill}{Color of drips}
 
+\item{toolTipTextColor}{Color of tooltip text}
+
 \item{backgroundFill}{Background color of SVG}
 
 \item{fontSize}{Font size}

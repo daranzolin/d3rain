@@ -89,6 +89,7 @@ drip_behavior <- function(d3rain,
 #'
 #' @param d3rain An object of class d3rain
 #' @param dripFill Color of drips
+#' @param toolTipTextColor Color of tooltip text
 #' @param backgroundFill Background color of SVG
 #' @param fontSize Font size
 #' @param fontFamily Font family, e.g. 'times', 'sans-serif'
