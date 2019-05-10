@@ -91,6 +91,7 @@ drip_behavior <- function(d3rain,
 #' @param fontSize Font size
 #' @param fontFamily Font family, e.g. 'times', 'sans-serif'
 #' @param dripOpacity Opacity of drips
+#' @param yAxisTickLocation Location of y-axis ticks, either 'center', 'left', or 'right'
 #'
 #' @return d3rain
 #' @export
@@ -105,13 +106,15 @@ drip_style <- function(d3rain,
                        backgroundFill = 'white',
                        fontSize = 18,
                        fontFamily = 'sans-serif',
-                       dripOpacity = 0.5) {
+                       dripOpacity = 0.5,
+                       yAxisTickLocation = 'center') {
 
   d3rain$x$dripFill <- dripFill
   d3rain$x$dripOpacity <- dripOpacity
   d3rain$x$backgroundFill <- backgroundFill
   d3rain$x$fontSize <- fontSize
   d3rain$x$fontFamily <- fontFamily
+  d3rain$x$yAxisTickLocation <- yAxisTickLocation
   return(d3rain)
 }
 

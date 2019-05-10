@@ -25,6 +25,23 @@ HTMLWidgets.widget({
             .attr("height", "100%")
             .attr("fill", opts.hasOwnProperty('backgroundFill') ? opts.backgroundFill : 'white');
 
+        let yAxisTickLocation;
+        let textAnchor;
+        switch(opts.yAxisTickLocation) {
+          case 'center':
+            yAxisTickLocation = width/2;
+            textAnchor = 'middle';
+          break;
+          case 'right':
+            yAxisTickLocation = width - margin.right;
+            textAnchor = 'end';
+          break;
+          case 'left':
+            yAxisTickLocation = margin.right;
+            textAnchor = 'start';
+          break;
+          default:
+        }
 
         let fontSize = opts.hasOwnProperty('fontSize') ? opts.fontSize : 18;
         let fontFamily = opts.hasOwnProperty('fontFamily') ? opts.fontFamily : 'sans-serif';
@@ -74,7 +91,8 @@ HTMLWidgets.widget({
         svg.append("g")
                 .call(yAxis)
                 .selectAll("text")
-                .attr("x", width / 2)
+                .attr("x", yAxisTickLocation)
+                .attr("text-anchor", textAnchor)
                 .attr('transform', 'translate(0, 10)')
                 .style("font", `${opts.fontSize}px ${opts.fontFamily}`);
 

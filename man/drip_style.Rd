@@ -5,7 +5,8 @@
 \title{Adjust drip style}
 \usage{
 drip_style(d3rain, dripFill = "firebrick", backgroundFill = "white",
-  fontSize = 18, fontFamily = "sans-serif", dripOpacity = 0.5)
+  fontSize = 18, fontFamily = "sans-serif", dripOpacity = 0.5,
+  yAxisTickLocation = "center")
 }
 \arguments{
 \item{d3rain}{An object of class d3rain}
@@ -19,6 +20,8 @@ drip_style(d3rain, dripFill = "firebrick", backgroundFill = "white",
 \item{fontFamily}{Font family, e.g. 'times', 'sans-serif'}
 
 \item{dripOpacity}{Opacity of drips}
+
+\item{yAxisTickLocation}{Location of y-axis ticks, either 'center', 'left', or 'right'}
 }
 \value{
 d3rain
