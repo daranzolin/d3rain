@@ -3,3 +3,4 @@
 ^README\.Rmd$
 ^d3rain\.Rproj$
 ^\.Rproj\.user$
+^cran-comments.md$
