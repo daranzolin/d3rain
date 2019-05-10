@@ -105,6 +105,7 @@ drip_behavior <- function(d3rain,
 #'     drip_style(dripFill = 'steelblue', dripOpacity = 0.2)
 drip_style <- function(d3rain,
                        dripFill = 'firebrick',
+                       toolTipTextColor = 'white',
                        backgroundFill = 'white',
                        fontSize = 18,
                        fontFamily = 'sans-serif',
@@ -117,6 +118,7 @@ drip_style <- function(d3rain,
   d3rain$x$fontSize <- fontSize
   d3rain$x$fontFamily <- fontFamily
   d3rain$x$yAxisTickLocation <- yAxisTickLocation
+  d3rain$x$toolTipTextColor <- toolTipTextColor
   return(d3rain)
 }
 
