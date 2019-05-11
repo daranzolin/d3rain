@@ -68,6 +68,9 @@ pk %>%
                  yAxisTickLocation = 'left')
 ```
 
+![Alt
+Text](https://raw.githubusercontent.com/daranzolin/d3rain/master/inst/img/d3raingif2.gif)
+
 ## Future Work
 
   - Additional drip behaviors (e.g. by group)
