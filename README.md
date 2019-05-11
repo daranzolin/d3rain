@@ -27,7 +27,7 @@ factored, categorical variable.
 
 ``` r
 library(d3rain)
-library(tidyverse)
+library(dplyr)
 
 armed_levels <- c('No', 'Knife', 'Non-lethal firearm', 'Firearm')
 pk <- fivethirtyeight::police_killings %>% 

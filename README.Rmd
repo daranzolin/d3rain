@@ -32,7 +32,7 @@ remotes::install_github("daranzolin/d3rain")
 
 ```{r eval=FALSE}
 library(d3rain)
-library(tidyverse)
+library(dplyr)
 
 armed_levels <- c('No', 'Knife', 'Non-lethal firearm', 'Firearm')
 pk <- fivethirtyeight::police_killings %>% 
