@@ -47,7 +47,7 @@ pk %>%
 ```
 
 ![Alt
-Text](https://raw.githubusercontent.com/daranzolin/d3rain/master/inst/img/d3raingif.gif)
+Text](https://raw.githubusercontent.com/daranzolin/d3rain/master/inst/img/d3raingif1.gif)
 
 `drip_settings` adjusts the drip sequence, easing animation, jitter
 width, drip speed, and color. `chart_settings` controls the axes
