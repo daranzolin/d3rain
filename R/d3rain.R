@@ -55,12 +55,14 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
   )
 }
 
-#' Adjust drip behavior
+#' Adjust drip style and behavior
 #'
 #' @param d3rain An object of class d3rain
+#' @param dripFill Color of drips
+#' @param dripOpacity Opacity of drips
 #' @param dripSequence Either 'iterate' or 'together'
 #' @param ease Either 'bounce' or 'linear'
-#' @param dripSpeed Drip speed
+#' @param dripSpeed Drip speed in milliseconds
 #' @param iterationSpeedX Iteration speed multiplier
 #' @param jitterWidth Jitter width in pixels along x-axis
 #'
@@ -69,8 +71,10 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
 #' mtcars$cyl <- factor(mtcars$cyl)
 #' mtcars$car <- rownames(mtcars)
 #' d3rain(mtcars, mpg, cyl, car) %>%
-#'     drip_behavior(ease = 'linear', jitterWidth = 25, dripSpeed = 500)
-drip_behavior <- function(d3rain,
+#'     drip_settings(ease = 'linear', jitterWidth = 25, dripSpeed = 500)
+drip_settings <- function(d3rain,
+                          dripFill = 'firebrick',
+                          dripOpacity = 0.5,
                           dripSequence = 'iterate',
                           ease = 'bounce',
                           dripSpeed = 1500,
@@ -90,6 +94,8 @@ drip_behavior <- function(d3rain,
     stop("dripSpeed and iterationSpeedX must be numeric", call. = FALSE)
   }
 
+  d3rain$x$dripFill <- dripFill
+  d3rain$x$dripOpacity <- dripOpacity
   d3rain$x$dripSequence <- dripSequence
   d3rain$x$ease <- ease
   d3rain$x$dripSpeed <- dripSpeed
@@ -98,15 +104,13 @@ drip_behavior <- function(d3rain,
   return(d3rain)
 }
 
-#' Adjust drip style
+#' Adjust chart settings
 #'
 #' @param d3rain An object of class d3rain
-#' @param dripFill Color of drips
 #' @param toolTipTextColor Color of tooltip text
 #' @param backgroundFill Background color of SVG
 #' @param fontSize Font size
 #' @param fontFamily Font family, e.g. 'times', 'sans-serif'
-#' @param dripOpacity Opacity of drips
 #' @param yAxisTickLocation Location of y-axis ticks, either 'center', 'left', or 'right'
 #'
 #' @return d3rain
@@ -115,19 +119,19 @@ drip_behavior <- function(d3rain,
 #' mtcars$cyl <- factor(mtcars$cyl)
 #' mtcars$car <- rownames(mtcars)
 #' d3rain(mtcars, mpg, cyl, car) %>%
-#'     drip_behavior(ease = 'linear', jitterWidth = 25, dripSpeed = 500) %>%
-#'     drip_style(dripFill = 'steelblue', dripOpacity = 0.2)
-drip_style <- function(d3rain,
-                       dripFill = 'firebrick',
+#'     drip_settings(ease = 'linear', jitterWidth = 25, dripSpeed = 500) %>%
+#'     chart_settings(fontFamily = 'times', yAxisTickLocation = 'left')
+chart_settings <- function(d3rain,
                        toolTipTextColor = 'white',
                        backgroundFill = 'white',
                        fontSize = 18,
                        fontFamily = 'sans-serif',
-                       dripOpacity = 0.5,
                        yAxisTickLocation = 'center') {
 
-  d3rain$x$dripFill <- dripFill
-  d3rain$x$dripOpacity <- dripOpacity
+  if (!yAxisTickLocation %in% c('left', 'right', 'center')) {
+    stop("yAxisTickLocation param must be either 'left', 'right', or 'center'", call. = FALSE)
+  }
+
   d3rain$x$backgroundFill <- backgroundFill
   d3rain$x$fontSize <- fontSize
   d3rain$x$fontFamily <- fontFamily
