@@ -49,9 +49,9 @@ pk %>%
 ![Alt
 Text](https://raw.githubusercontent.com/daranzolin/d3rain/master/inst/img/d3raingif.gif)
 
-`drip_behavior` adjusts the drip sequence, easing animation, jitter
-width, and drip speed. `drip_style` controls the drip fill, font size,
-font family, and background color.
+`drip_settings` adjusts the drip sequence, easing animation, jitter
+width, drip speed, and color. `chart_settings` controls the axes
+displays, font size, font family, and background color.
 
 You can adjust the drip iteration by reordering the data frame:
 
