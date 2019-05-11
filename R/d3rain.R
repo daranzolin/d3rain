@@ -20,8 +20,21 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
   y <- rlang::enquo(y)
   toolTip <- rlang::enquo(toolTip)
 
-  out_df <- subset(.data, select = c(tidyselect::vars_select(names(.data), !!x, !!y, !!toolTip)))
-  toolTipName <- names(out_df)[3]
+  cx <- all(.data[,rlang::quo_name(toolTip)] == .data[,rlang::quo_name(x)])
+  cy <- all(.data[,rlang::quo_name(toolTip)] == .data[,rlang::quo_name(y)])
+
+  out_df <- as.data.frame(subset(.data, select = c(tidyselect::vars_select(names(.data), !!x, !!y, !!toolTip))))
+
+  if (cx) {
+    out_df$toolTip <- out_df[,1]
+    toolTipName <- names(out_df)[1]
+  } else if (cy) {
+    out_df$toolTip <- out_df[,2]
+    toolTipName <- names(out_df)[2]
+  } else {
+    toolTipName <- names(out_df)[3]
+  }
+
   names(out_df) <- c('ind', 'group', 'toolTip')
   if (!is.numeric(out_df$ind)) stop ("x must be numeric.", call. = FALSE)
   if (!is.factor(out_df$group)) stop("y must be a factor.", call. = FALSE)
