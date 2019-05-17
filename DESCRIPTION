@@ -2,7 +2,9 @@ Package: d3rain
 Title: Interactive D3 Rain Drop Visualizations
 Version: 0.0.1
 Authors@R: person("David", "Ranzolin", email = "daranzolin@gmail.com", role = c("aut", "cre"))
-Description: Observe the interaction between a numeric ranking variable and a factored categorical variable.
+Description: Create interactive raindrop visualizations and observe the interaction between a numeric 
+  ranking variable and a factored categorical variable. Control drop speed, sequence, jitter and tooltips. 
+  Usable from the R console, 'R Markdown' documents, and 'Shiny' apps.
 Depends: R (>= 3.5)
 License: MIT + file LICENSE
 Encoding: UTF-8

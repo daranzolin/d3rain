@@ -10,7 +10,7 @@ HTMLWidgets.widget({
 
       renderValue: function(opts) {
 
-        margin = ({top: 100, right: 10, bottom: 20, left: 25});
+        margin = ({top: 100, right: 25, bottom: 20, left: 25});
 
         const data = HTMLWidgets.dataframeToD3(opts.data);
         //console.log(data);
