@@ -5,6 +5,7 @@
 
 [![Travis build
 status](https://travis-ci.org/daranzolin/d3rain.svg?branch=master)](https://travis-ci.org/daranzolin/d3rain)
+![CRAN log](http://www.r-pkg.org/badges/version/d3rain)
 
 According to the authorities at Urban Dictionary, [‘drip’ is synonymous
 with ‘immense
