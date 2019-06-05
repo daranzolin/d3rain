@@ -48,6 +48,14 @@ HTMLWidgets.widget({
         let jitterWidth = opts.hasOwnProperty('jitterWidth') ? opts.jitterWidth : 0;
         let dripSequence = opts.hasOwnProperty('dripSequence') ? opts.dripSequence : 'iterate';
 
+        function drop_group(selection, i) {
+            selection.filter(d => d.group == opts.y_domain[i])
+            .transition()
+            .duration(opts.hasOwnProperty('dripSpeed') ? opts.dripSpeed : 1000)
+            .ease(opts.hasOwnProperty('ease') ? ease(opts.ease) : d3.easeBounce)
+            .attr('cy', d => y(d.group) + y.bandwidth() / 2 - Math.random() * jitterWidth);
+          }
+
         function ease(o) {
             return o === 'bounce' ? d3.easeBounce : d3.easeLinear;
         }
@@ -105,7 +113,6 @@ HTMLWidgets.widget({
                 .style("font-weight", "bold")
                 .text(opts.title);
 
-
         let tip = d3.tip()
               .attr('class', 'd3-tip')
               .offset([7, 7])
@@ -126,8 +133,8 @@ HTMLWidgets.widget({
                 .on('mouseover', tip.show)
                 .on('mouseout', tip.hide);
 
-
         if (dripSequence === 'iterate') {
+
           d3.timeout(_ => {
             circles = circles.transition()
             .delay((d, i) => opts.hasOwnProperty('iterationSpeedX') ? opts.iterationSpeedX * i : 100 * i)
@@ -135,13 +142,25 @@ HTMLWidgets.widget({
             .ease(opts.hasOwnProperty('ease') ? ease(opts.ease) : d3.easeBounce)
             .attr('cy', d => y(d.group) + y.bandwidth() / 2 - Math.random() * jitterWidth);
             }, 1500);
-        } else {
+
+        } else if (dripSequence == 'together') {
+
           d3.timeout(_ => {
             circles = circles.transition()
             .duration(opts.hasOwnProperty('dripSpeed') ? opts.dripSpeed : 1000)
             .ease(opts.hasOwnProperty('ease') ? ease(opts.ease) : d3.easeBounce)
             .attr('cy', d => y(d.group) + y.bandwidth() / 2 - Math.random() * jitterWidth);
           }, 1500);
+
+        } else {
+
+          let i = 0;
+          d3.timeout(_ => {
+            d3.interval(function(elapsed) {
+              drop_group(circles, i);
+              i++;
+            }, 2500);
+          }, 500);
         }
       },
 
