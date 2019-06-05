@@ -72,6 +72,35 @@ pk %>%
 ![Alt
 Text](https://raw.githubusercontent.com/daranzolin/d3rain/master/inst/img/d3raingif2.gif)
 
+## Rain Histograms
+
+Create rain histograms with `d3rain_hist` and the accompanying
+functions:
+
+``` r
+d <- readr::read_csv("https://raw.githubusercontent.com/babeheim/citation-gates/master/citation-data-simulated.csv") %>% 
+  rename(Downloaded = downloaded, 
+         Contacted = contacted, 
+         Replied = reply_received, 
+         Received = data_received) %>% 
+  mutate(Total = TRUE,
+         `Downloaded and Received` = case_when(
+           Downloaded ~ TRUE,
+           Received ~ TRUE,
+           TRUE ~ FALSE)
+         ) 
+
+d %>% 
+  d3rain_hist(x = year, 
+              levels = c("Total", "Contacted", "Replied", "Downloaded and Received"), 
+              title = "Citation Statuses, 1960-2019") %>% 
+  hist_chart_settings(annotations = c("Total Sample: 560", "475 (95%)", "309 (65%)", "147 (26%)"),
+                      levelLabelLocation = "right") %>% 
+  hist_drip_settings(colors = c("black", "forestgreen", "orange", "firebrick"),
+                     transitionIntervals = 2500,
+                     dripSpeed = 300)
+```
+
 ## Future Work
 
   - Additional drip behaviors (e.g. by group)
