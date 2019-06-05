@@ -5,7 +5,7 @@
 \title{Adjust chart settings}
 \usage{
 hist_chart_settings(d3rain_hist, annotations = NULL,
-  titlePosition = NULL, levelLabelLocation = NULL)
+  titlePosition = "center", levelLabelLocation = "center")
 }
 \arguments{
 \item{d3rain_hist}{an object of class d3rain_hist}

@@ -69,8 +69,8 @@ d3rain_hist <- function(.data, x, levels, title = "") {
 #'                      levelLabelLocation = "left")
 hist_chart_settings <- function(d3rain_hist,
                           annotations = NULL,
-                          titlePosition = NULL,
-                          levelLabelLocation = NULL) {
+                          titlePosition = 'center',
+                          levelLabelLocation = 'center') {
 
   if (!titlePosition %in% c("center", "left", "right")) {
     stop("titlePosition must be either 'center', 'left', or 'right'.", call. = FALSE)
