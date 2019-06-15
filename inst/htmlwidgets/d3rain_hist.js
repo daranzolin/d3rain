@@ -15,7 +15,11 @@ HTMLWidgets.widget({
         let margin = ({top: 100, right: rm, bottom: 100, left: 40});
         let titlePosition = opts.hasOwnProperty('titlePosition') ? opts.titlePosition : 'center';
         if (titlePosition === 'center'){
-          titlePosition = width/2;
+          if (opts.hasOwnProperty('annotations')) {
+            titlePosition = (width - margin.right)/2;
+          } else {
+            titlePosition = width/2;
+          }
         } else if (titlePosition === 'left') {
           titlePosition = margin.left;
         } else {
@@ -82,7 +86,7 @@ HTMLWidgets.widget({
               let colData = data.filter(d => d[col]).map(d => d.xVar);
               let b = d3.histogram()
                   .domain(x.domain())
-                  .thresholds(x.ticks(50))
+                  .thresholds(x.ticks(opts.xBins))
                 (colData);
               yBins.push(b.map(d => d.sort()));
 

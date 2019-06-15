@@ -4,7 +4,7 @@
 \alias{d3rain_hist}
 \title{Create Rain Histograms}
 \usage{
-d3rain_hist(.data, x, levels, title = "")
+d3rain_hist(.data, x, levels, title = "", xBins = 40)
 }
 \arguments{
 \item{.data}{a table of data}
@@ -14,6 +14,8 @@ d3rain_hist(.data, x, levels, title = "")
 \item{levels}{the ordered columns}
 
 \item{title}{chart title}
+
+\item{xBins}{Number of bins. Defaults to 40.}
 }
 \value{
 an object of class 'd3rain_hist'

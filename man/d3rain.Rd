@@ -23,7 +23,8 @@ d3rain(.data, x, y, toolTip, reverseX = FALSE, title = "")
 Create a d3rain visualization
 }
 \examples{
-mtcars$cyl <- factor(mtcars$cyl)
-mtcars$car <- rownames(mtcars)
-d3rain(mtcars, mpg, cyl, car)
+iris \%>\%
+ d3rain(x = Sepal.Length, y = Species, toolTip = Sepal.Length, title = "Sepal Length by Species") \%>\%
+ drip_settings(jitterWidth = 30, dripFill = 'steelblue') \%>\%
+ chart_settings(yAxisTickLocation = 'center')
 }

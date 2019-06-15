@@ -4,6 +4,7 @@
 #' @param x the binning x variable
 #' @param levels the ordered columns
 #' @param title chart title
+#' @param xBins Number of bins. Defaults to 40.
 #'
 #' @return an object of class 'd3rain_hist'
 #' @export
@@ -16,7 +17,7 @@
 #' l3 = sample(c(TRUE, FALSE), replace = TRUE, size = 100, prob = c(0.3, 0.7))
 #' ) %>%
 #'  d3rain_hist(x = x, levels = c("l1", "l2", "l3"), title = "my title")
-d3rain_hist <- function(.data, x, levels, title = "") {
+d3rain_hist <- function(.data, x, levels, title = "", xBins = 40) {
 
   if (!all(levels %in% names(.data))) {
     stop("each level must be a column", call. = FALSE)
@@ -34,7 +35,8 @@ d3rain_hist <- function(.data, x, levels, title = "") {
   x = list(
     data = out_df,
     levels = levels,
-    title = title
+    title = title,
+    xBins = xBins
   )
 
   # create widget
