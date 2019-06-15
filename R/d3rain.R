@@ -64,6 +64,7 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
 #' @param dripSequence Either 'iterate' or 'together'
 #' @param ease Either 'bounce' or 'linear'
 #' @param dripSpeed Drip speed in milliseconds
+#' @param dripSize Drip radius
 #' @param iterationSpeedX Iteration speed multiplier
 #' @param jitterWidth Jitter width in pixels along x-axis
 #'
@@ -77,6 +78,7 @@ drip_settings <- function(d3rain,
                           dripFill = 'firebrick',
                           dripOpacity = 0.5,
                           dripSequence = 'iterate',
+                          dripSize = 4,
                           ease = 'bounce',
                           dripSpeed = 1500,
                           iterationSpeedX = 100,
@@ -100,6 +102,7 @@ drip_settings <- function(d3rain,
   d3rain$x$dripSequence <- dripSequence
   d3rain$x$ease <- ease
   d3rain$x$dripSpeed <- dripSpeed
+  d3rain$x$dripSize <- dripSize
   d3rain$x$iterationSpeedX <- iterationSpeedX
   d3rain$x$jitterWidth <- jitterWidth
   return(d3rain)

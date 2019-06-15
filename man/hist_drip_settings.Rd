@@ -5,7 +5,7 @@
 \title{Adjust hist drip settings}
 \usage{
 hist_drip_settings(d3rain_hist, colors = NULL,
-  transitionIntervals = 2500, dripSpeed = 300)
+  transitionIntervals = 2500, dripSpeed = 300, dripSize = 5)
 }
 \arguments{
 \item{d3rain_hist}{an object of d3rain_hist}
@@ -15,6 +15,8 @@ hist_drip_settings(d3rain_hist, colors = NULL,
 \item{transitionIntervals}{milliseconds between group transitions}
 
 \item{dripSpeed}{drop speed}
+
+\item{dripSize}{drip radius}
 }
 \value{
 an object of d3rain_hist

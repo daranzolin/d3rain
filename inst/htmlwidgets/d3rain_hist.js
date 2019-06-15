@@ -11,6 +11,7 @@ HTMLWidgets.widget({
       renderValue: function(opts) {
 
         let rm = opts.hasOwnProperty('annotations') ? 200 : 20;
+        let dripSize = opts.hasOwnProperty('dripSize') ? opts.dripSize : 4;
         let fontFamily = opts.hasOwnProperty('fontFamily') ? opts.fontFamily : 'sans-serif';
         let margin = ({top: 100, right: rm, bottom: 100, left: 40});
         let titlePosition = opts.hasOwnProperty('titlePosition') ? opts.titlePosition : 'center';
@@ -213,7 +214,7 @@ HTMLWidgets.widget({
             .enter().append('circle')
               .attr("cx", d => x(d.x))
               .attr("cy", (margin.top / 6))
-              .attr("r", 4)
+              .attr("r", dripSize)
               .style("opacity", 0);
 
 

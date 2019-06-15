@@ -5,8 +5,8 @@
 \title{Adjust drip style and behavior}
 \usage{
 drip_settings(d3rain, dripFill = "firebrick", dripOpacity = 0.5,
-  dripSequence = "iterate", ease = "bounce", dripSpeed = 1500,
-  iterationSpeedX = 100, jitterWidth = 0)
+  dripSequence = "iterate", dripSize = 4, ease = "bounce",
+  dripSpeed = 1500, iterationSpeedX = 100, jitterWidth = 0)
 }
 \arguments{
 \item{d3rain}{An object of class d3rain}
@@ -16,6 +16,8 @@ drip_settings(d3rain, dripFill = "firebrick", dripOpacity = 0.5,
 \item{dripOpacity}{Opacity of drips}
 
 \item{dripSequence}{Either 'iterate' or 'together'}
+
+\item{dripSize}{Drip radius}
 
 \item{ease}{Either 'bounce' or 'linear'}
 

@@ -44,6 +44,7 @@ HTMLWidgets.widget({
         }
 
         let fontSize = opts.hasOwnProperty('fontSize') ? opts.fontSize : 18;
+        let dripSize = opts.hasOwnProperty('dripSize') ? opts.dripSize : 4;
         let fontFamily = opts.hasOwnProperty('fontFamily') ? opts.fontFamily : 'sans-serif';
         let jitterWidth = opts.hasOwnProperty('jitterWidth') ? opts.jitterWidth : 0;
         let dripSequence = opts.hasOwnProperty('dripSequence') ? opts.dripSequence : 'iterate';
@@ -127,7 +128,7 @@ HTMLWidgets.widget({
               .enter().append('circle')
                 .attr('cx', d => x(d.ind))
                 .attr('cy', margin.top / 2)
-                .attr('r', 5)
+                .attr('r', dripSize)
                 .attr('fill', opts.hasOwnProperty('dripFill') ? opts.dripFill : 'firebrick')
                 .style('opacity', opts.hasOwnProperty('dripOpacity') ? opts.dripOpacity : 0.5)
                 .on('mouseover', tip.show)

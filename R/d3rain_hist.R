@@ -90,6 +90,7 @@ hist_chart_settings <- function(d3rain_hist,
 #' @param colors a vector of colors
 #' @param transitionIntervals milliseconds between group transitions
 #' @param dripSpeed drop speed
+#' @param dripSize drip radius
 #'
 #' @return an object of d3rain_hist
 #' @export
@@ -109,11 +110,13 @@ hist_chart_settings <- function(d3rain_hist,
 hist_drip_settings <- function(d3rain_hist,
                                colors = NULL,
                                transitionIntervals = 2500,
-                               dripSpeed = 300) {
+                               dripSpeed = 300,
+                               dripSize = 5) {
 
   d3rain_hist$x$colors <- colors
   d3rain_hist$x$transitionIntervals <- transitionIntervals
   d3rain_hist$x$dripSpeed <- dripSpeed
+  d3rain_hist$x$dripSize <- dripSize
   return(d3rain_hist)
 
 }
