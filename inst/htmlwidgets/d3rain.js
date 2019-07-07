@@ -25,9 +25,9 @@ HTMLWidgets.widget({
             .attr("height", "100%")
             .attr("fill", opts.hasOwnProperty('backgroundFill') ? opts.backgroundFill : 'white');
 
-        let yAxisTickLocation;
+        let yAxisTickLocation = opts.hasOwnProperty('yAxisTickLocation') ? opts.yAxisTickLocation : 'center';
         let textAnchor;
-        switch(opts.yAxisTickLocation) {
+        switch(yAxisTickLocation) {
           case 'center':
             yAxisTickLocation = width/2;
             textAnchor = 'middle';
