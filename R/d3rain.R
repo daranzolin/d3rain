@@ -61,7 +61,7 @@ d3rain <- function(.data, x, y, toolTip, reverseX = FALSE, title = '') {
 #' @param d3rain An object of class d3rain
 #' @param dripFill Color of drips
 #' @param dripOpacity Opacity of drips
-#' @param dripSequence Either 'iterate' or 'together'
+#' @param dripSequence Either 'iterate', together', or 'by_group'
 #' @param ease Either 'bounce' or 'linear'
 #' @param dripSpeed Drip speed in milliseconds
 #' @param dripSize Drip radius
@@ -85,7 +85,7 @@ drip_settings <- function(d3rain,
                           jitterWidth = 0) {
 
   if (!any(dripSequence %in% c('iterate', 'together', 'by_group'))) {
-    stop("dripSequence param must be 'iterate' or 'together'", call. = FALSE)
+    stop("dripSequence param must be 'iterate', 'together', or 'by_group'", call. = FALSE)
   }
   if (!inherits(d3rain, 'd3rain')) {
     stop("d3rain must be of class 'd3rain'")

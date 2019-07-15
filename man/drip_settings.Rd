@@ -15,7 +15,7 @@ drip_settings(d3rain, dripFill = "firebrick", dripOpacity = 0.5,
 
 \item{dripOpacity}{Opacity of drips}
 
-\item{dripSequence}{Either 'iterate' or 'together'}
+\item{dripSequence}{Either 'iterate', together', or 'by_group'}
 
 \item{dripSize}{Drip radius}
 

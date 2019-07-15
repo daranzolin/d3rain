@@ -48,6 +48,7 @@ HTMLWidgets.widget({
         let fontFamily = opts.hasOwnProperty('fontFamily') ? opts.fontFamily : 'sans-serif';
         let jitterWidth = opts.hasOwnProperty('jitterWidth') ? opts.jitterWidth : 0;
         let dripSequence = opts.hasOwnProperty('dripSequence') ? opts.dripSequence : 'iterate';
+        let reverseX = opts.hasOwnProperty('reverseX') ? opts.reverseX : false;
 
         function drop_group(selection, i) {
             selection.filter(d => d.group == opts.y_domain[i])
@@ -62,7 +63,7 @@ HTMLWidgets.widget({
         }
 
         let x;
-        if (opts.reverseX) {
+        if (reverseX) {
           x = d3.scaleLinear()
                 .domain([d3.max(data, d => +d.ind), d3.min(data, d => +d.ind)])
                 .range([margin.left, width - margin.right]);
